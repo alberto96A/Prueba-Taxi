@@ -2,7 +2,7 @@ import time
 
 def calcular_tarifa(taxi_en_movimiento):
     tarifa_por_segundo = 0.02 if not taxi_en_movimiento else 0.05
-    tiempo_inicio = time.time() 
+    tiempo_inicio = time.time()
     tiempo_actual = time.time()
 
     while True:
@@ -15,24 +15,52 @@ def calcular_tarifa(taxi_en_movimiento):
 
 def main():
     print("Bienvenido al programa de cálculo de tarifa del taxi.")
-    print("Instrucciones: ...")  # Explica aquí el funcionamiento del programa
-    taxi_movimiento = False 
+    print("Instrucciones:")
+    print("- Para iniciar una carrera, ingrese 'empezar'")
+    print("- Para indicar que el taxi está en movimiento, ingrese 'movimiento'")
+    print("- Para indicar que el taxi se queda quieto, ingrese 'parado'")
+    print("- Para finalizar la carrera y obtener el precio total, ingrese 'finalizar'")
+    print("- Para salir del programa, ingrese 'salir'")
+
+    taxi_en_movimiento = False
+    carrera_iniciada = False
+    tiempo_inicio = 0
 
     while True:
         instruccion = input("Ingrese una instrucción: ")
 
         if instruccion == "empezar":
-            taxi_movimiento = True
-            calcular_tarifa(taxi_movimiento)
-        elif instruccion == "parar":
-            taxi_movimiento = False
+            if not carrera_iniciada:
+                carrera_iniciada = True
+                tiempo_inicio = time.time()
+                print("Carrera iniciada.")
+            else:
+                print("La carrera ya ha sido iniciada.")
+        elif instruccion == "movimiento":
+            if carrera_iniciada:
+                taxi_en_movimiento = True
+                print("El taxi está en movimiento.")
+            else:
+                print("Por favor, inicie la carrera primero.")
+        elif instruccion == "parado":
+            if carrera_iniciada:
+                taxi_en_movimiento = False
+                print("El taxi se encuentra parado.")
+            else:
+                print("Por favor, inicie la carrera primero.")
         elif instruccion == "finalizar":
-            # Lógica para finalizar la carrera y devolver el precio total en euros
-            pass
+            if carrera_iniciada:
+                tiempo_transcurrido = time.time() - tiempo_inicio
+                precio_total = tiempo_transcurrido * 0.05
+                print(f"El precio total es: {precio_total:.2f} euros.")
+                carrera_iniciada = False
+            else:
+                print("Por favor, inicie la carrera primero.")
         elif instruccion == "salir":
+            print("¡Gracias por utilizar nuestro servicio de cálculo de tarifa!")
             break
         else:
-            print("Instrucción inválida.")
+            print("Instrucción inválida. Por favor, intente nuevamente.")
 
 if __name__ == "__main__":
     main()
