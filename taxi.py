@@ -1,4 +1,7 @@
 import time
+import logging
+
+logging.basicConfig(filename='registro.log', level=logging.INFO)
 
 def calcular_tarifa(taxi_en_movimiento):
     tarifa_por_segundo = 0.02 if not taxi_en_movimiento else 0.05
@@ -28,7 +31,10 @@ def main():
 
     while True:
         instruccion = input("Ingrese una instrucción: ")
-
+        logging.debug('depuración')
+        logging.info('información')
+        logging.warning('advertencia')
+        logging.error('error')
         if instruccion == "empezar":
             if not carrera_iniciada:
                 carrera_iniciada = True

@@ -1,0 +1,4 @@
+DEBUG:root:Este es un mensaje de depuración
+INFO:root:Esta es una información
+WARNING:root:Este es un mensaje de advertencia
+ERROR:root:Este es un mensaje de error
