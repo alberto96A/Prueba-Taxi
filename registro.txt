@@ -1,1 +1,6 @@
 Duración: 8.99 segundos, Precio: 0.45 euros
+Duración: 9.12 segundos, Precio: 0.46 euros
+Prueba de registro
+Duración: 10.00 segundos, Precio: 5.00 euros
+Duración: 9.70 segundos, Precio: 0.49 euros
+Duración: 8.79 segundos, Precio: 0.44 euros
