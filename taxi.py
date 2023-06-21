@@ -35,10 +35,7 @@ def main():
 
     while True:
         instruccion = input("Ingrese una instrucción: ")
-        logging.debug('depuración')
-        logging.info('información')
-        logging.warning('advertencia')
-        logging.error('error')
+
         if instruccion == "empezar":
             if not carrera_iniciada:
                 carrera_iniciada = True
@@ -75,6 +72,11 @@ def main():
             break
         else:
             print("Instrucción inválida. Por favor, intente nuevamente.")
+        
+        logging.debug('depuración')
+        logging.info('información')
+        logging.warning('advertencia')
+        logging.error('error')
 
 if __name__ == "__main__":
     main()
