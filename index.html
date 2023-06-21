@@ -1,0 +1,95 @@
+<html>
+<head>
+  <title>Taxi Counter</title>
+
+  <button class="button">Haz clic aquí</button>
+  <style>
+
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    #000000,
+    #000000 10px,
+    #ffff00 10px,
+    #ffff00 20px
+  );
+}
+
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ff00c8;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 5px 0px #990000;
+}
+
+.button:hover {
+  background-color: #cc0000;
+  box-shadow: 0px 2px 0px #990000;
+  transform: translateY(3px);
+}
+
+.button:active {
+  background-color: #aa0000;
+  box-shadow: 0px 1px 0px #990000;
+  transform: translateY(4px);
+}
+
+
+
+    .taxi {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      transition: left 1s linear;
+    }
+
+    .counter {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="taxi"></div>
+  <div class="counter">Money: $<span id="money">0</span> | Time: <span id="time">0</span> seconds</div>
+
+  <script>
+    // Variables globales
+    let money = 0;
+    let time = 0;
+    let taxiPosition = 0;
+
+    // Función para actualizar el contador
+    function updateCounter() {
+      const moneyElement = document.getElementById('money');
+      const timeElement = document.getElementById('time');
+
+      moneyElement.textContent = money.toFixed(2);
+      timeElement.textContent = time;
+
+      taxiPosition += 10; // Valor para avanzar el taxi (ajústalo según tus necesidades)
+      document.querySelector('.taxi').style.left = taxiPosition + 'px';
+
+      // Actualizar cada segundo
+      setTimeout(updateCounter, 1000);
+    }
+
+    // Iniciar el contador al cargar la página
+    window.onload = function() {
+      updateCounter();
+    };
+  </script>
+</body>
+</html>
