@@ -6,6 +6,7 @@
     body {
       background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,245,95,1) 49%, rgba(0,0,0,1) 100%);
+      
     }
 
     .button {
@@ -65,14 +66,15 @@
     }
 
     .taxi {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      transition: left 1s linear;
-    }
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url("images/taxi.png");
+  background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+  transition: left 1s linear;
+}
 
     .counter {
       margin-top: 100px;
