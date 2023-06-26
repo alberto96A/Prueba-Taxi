@@ -66,13 +66,16 @@
 
     .taxi {
       position: absolute;
-      top: 50%;
+      top: 32%;
       left: 0;
-      width: 50px;
-      height: 50px;
+      width: 200px;
+      height: 210px;
       background-image: url("taxi.png");
       background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
       transition: left 1s linear;
+      background-size: contain; /* Ajusta el tamaño para que la imagen se muestre completa */
+      background-repeat: no-repeat; /* Evita la repetición de la imagen */
+      background-position: center; /* Centra la imagen */
     }
 
     .counter {
@@ -88,6 +91,7 @@
   <div class="counter">Money: $<span id="money">0</span> | Time: <span id="time">0</span> seconds</div>
 
   <button class="button" onclick="startRace()">Comenzar</button>
+  <div id="frenarButtonContainer"></div>
   <button class="salida" onclick="exit()">Salir</button>
 
   <script>
@@ -132,7 +136,29 @@
 
         // Deshabilitar el botón de inicio
         document.querySelector('.button').disabled = true;
+
+        // Mostrar el botón de frenar
+        const frenarButtonContainer = document.getElementById('frenarButtonContainer');
+        const frenarButton = document.createElement('button');
+        frenarButton.innerHTML = 'Frenar';
+        frenarButton.className = 'button';
+        frenarButton.onclick = frenar;
+        frenarButtonContainer.appendChild(frenarButton);
       }
+    }
+
+    // Función para frenar el taxi y disminuir el valor de cobro por segundo
+    function frenar() {
+      clearInterval(intervalId); // Detener el contador de tiempo
+
+      // Redefinir el incremento de dinero cada segundo
+      intervalId = setInterval(function() {
+        time++;
+        money += 0.05 - 0.03;
+      }, 1000);
+
+      // Deshabilitar el botón de frenar
+      document.querySelector('.button').disabled = true;
     }
 
     // Función para salir de la página
