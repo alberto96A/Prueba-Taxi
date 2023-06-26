@@ -6,7 +6,6 @@
     body {
       background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,245,95,1) 49%, rgba(0,0,0,1) 100%);
-      
     }
 
     .button {
@@ -27,7 +26,7 @@
 
     .button:hover {
       background-color: black;
-      color:yellow;
+      color: yellow;
       box-shadow: 0px 2px 0px #990000;
       transform: translateY(3px);
     }
@@ -45,8 +44,8 @@
       padding: 6px 16px;
       font-weight: bold;
       text-align: center;
-      color:black;
-      background-color:red;
+      color: black;
+      background-color: red;
       border: none;
       border-radius: 5px;
       box-shadow: 0px 2px 0px;
@@ -66,20 +65,21 @@
     }
 
     .taxi {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  background-image: url("images/taxi.png");
-  background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
-  transition: left 1s linear;
-}
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-image: url("taxi.png");
+      background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+      transition: left 1s linear;
+    }
 
     .counter {
       margin-top: 100px;
       text-align: center;
       font-size: 24px;
+      color: white;
     }
   </style>
 </head>
@@ -87,14 +87,16 @@
   <div class="taxi"></div>
   <div class="counter">Money: $<span id="money">0</span> | Time: <span id="time">0</span> seconds</div>
 
-  <button class="button">Comenzar</button>
-  <button class="salida">Salir</button>
+  <button class="button" onclick="startRace()">Comenzar</button>
+  <button class="salida" onclick="exit()">Salir</button>
 
   <script>
     // Variables globales
     let money = 0;
     let time = 0;
     let taxiPosition = 0;
+    let intervalId;
+    let raceStarted = false; // Variable para verificar si la carrera ha comenzado
 
     // Función para actualizar el contador
     function updateCounter() {
@@ -104,11 +106,39 @@
       moneyElement.textContent = money.toFixed(2);
       timeElement.textContent = time;
 
-      taxiPosition += 10; // Valor para avanzar el taxi (ajústalo según tus necesidades)
-      document.querySelector('.taxi').style.left = taxiPosition + 'px';
+      if (raceStarted) { // Solo avanzar el taxi y aumentar el dinero si la carrera ha comenzado
+        taxiPosition += 10; // Valor para avanzar el taxi (ajústalo según tus necesidades)
+        document.querySelector('.taxi').style.left = taxiPosition + 'px';
+
+        // Incrementar el dinero cada segundo
+        money += 0.05;
+      }
 
       // Actualizar cada segundo
       setTimeout(updateCounter, 1000);
+    }
+
+    // Función para iniciar la carrera
+    function startRace() {
+      if (!raceStarted) { // Evitar iniciar la carrera múltiples veces
+        raceStarted = true; // Marcar que la carrera ha comenzado
+
+        // Iniciar el contador de dinero
+        money = 0;
+        time = 0;
+        intervalId = setInterval(function() {
+          time++;
+        }, 1000);
+
+        // Deshabilitar el botón de inicio
+        document.querySelector('.button').disabled = true;
+      }
+    }
+
+    // Función para salir de la página
+    function exit() {
+      clearInterval(intervalId); // Detener el contador de tiempo
+      window.location.href = 'about:blank'; // Redirigir a una página en blanco
     }
 
     // Iniciar el contador al cargar la página
