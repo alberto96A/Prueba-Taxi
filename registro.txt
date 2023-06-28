@@ -2,3 +2,4 @@ Duración: 3.43 segundos, Precio: 0.00 euros
 Duración: 6.46 segundos, Precio: 0.32 euros
 Duración: 5.98 segundos, Precio: 0.30 euros
 Duración: 2.26 segundos, Precio: 0.00 euros
+Duración: 2.02 segundos, Precio: 0.00 euros
