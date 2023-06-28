@@ -3,6 +3,7 @@
 <head>
   <title>Taxi Counter</title>
   <style>
+    /* Estilos CSS para el diseño de la página */
     body {
       background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,245,95,1) 49%, rgba(0,0,0,1) 100%);
@@ -90,33 +91,40 @@
   </style>
 </head>
 <body>
-  <H1>EASY TAXI</H1>
-  <div class="taxi"></div>
+  <H1>EASY TAXI</H1> <!-- Encabezado de la página -->
+  <div class="taxi"></div> <!-- Div que representa la imagen del taxi -->
+
+  <!-- Contador de dinero y tiempo -->
   <div class="counter">Money: $<span id="money">0</span> | Time: <span id="time">0</span> seconds</div>
 
+  <!-- Botón para comenzar la carrera -->
   <button class="button" onclick="startRace()">Comenzar</button>
+
+  <!-- Contenedor para el botón de frenar (se mostrará dinámicamente) -->
   <div id="frenarButtonContainer"></div>
+
+  <!-- Botón para salir de la página -->
   <button class="salida" onclick="exit()">Salir</button>
 
   <script>
     // Variables globales
-    let money = 0;
-    let time = 0;
-    let taxiPosition = 0;
-    let intervalId;
+    let money = 0; // Variable para el dinero
+    let time = 0; // Variable para el tiempo
+    let taxiPosition = 0; // Variable para la posición del taxi
+    let intervalId; // ID del intervalo de tiempo
     let raceStarted = false; // Variable para verificar si la carrera ha comenzado
 
     // Función para actualizar el contador
     function updateCounter() {
-      const moneyElement = document.getElementById('money');
-      const timeElement = document.getElementById('time');
+      const moneyElement = document.getElementById('money'); // Elemento para mostrar el dinero
+      const timeElement = document.getElementById('time'); // Elemento para mostrar el tiempo
 
-      moneyElement.textContent = money.toFixed(2);
-      timeElement.textContent = time;
+      moneyElement.textContent = money.toFixed(2); // Actualizar el dinero mostrado
+      timeElement.textContent = time; // Actualizar el tiempo mostrado
 
       if (raceStarted) { // Solo avanzar el taxi y aumentar el dinero si la carrera ha comenzado
         taxiPosition += 10; // Valor para avanzar el taxi (ajústalo según tus necesidades)
-        document.querySelector('.taxi').style.left = taxiPosition + 'px';
+        document.querySelector('.taxi').style.left = taxiPosition + 'px'; // Actualizar la posición del taxi en la página
 
         // Incrementar el dinero cada segundo
         money += 0.05;

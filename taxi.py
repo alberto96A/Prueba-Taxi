@@ -1,9 +1,11 @@
 import time
 import logging
 
+# Configuración básica del registro de eventos
 logging.basicConfig(filename='registro.log', level=logging.INFO)
 
 def calcular_tarifa(taxi_en_movimiento, tiempo_inicio):
+    # Calcula la tarifa por segundo dependiendo si el taxi está en movimiento o no
     tarifa_por_segundo = 0.02 if not taxi_en_movimiento else 0.05
     tiempo_actual = time.time()
     tiempo_transcurrido = tiempo_actual - tiempo_inicio
@@ -11,15 +13,18 @@ def calcular_tarifa(taxi_en_movimiento, tiempo_inicio):
     print(f'Tarifa actual: {tarifa_actual:.2f} euros')
 
 def guardar_registro(registro):
+    # Abre el archivo "registro.txt" en modo de escritura y agrega el registro al final
     with open('registro.txt', 'a') as file:
         file.write(registro + '\n')
 
 def consultar_registro():
+    # Abre el archivo "registro.txt" en modo de lectura y muestra su contenido
     with open('registro.txt', 'r') as file:
         registros = file.read()
         print(registros)
 
 def main():
+    # Mensajes de bienvenida e instrucciones del programa
     print("Bienvenido al programa de cálculo de tarifa del taxi.")
     print("Instrucciones:")
     print("- Para iniciar una carrera, ingrese 'empezar'")
@@ -72,7 +77,8 @@ def main():
             break
         else:
             print("Instrucción inválida. Por favor, intente nuevamente.")
-        
+
+        # Registro de eventos utilizando logging
         logging.debug('depuración')
         logging.info('información')
         logging.warning('advertencia')
