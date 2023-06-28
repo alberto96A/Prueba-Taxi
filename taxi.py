@@ -37,6 +37,7 @@ def main():
     taxi_en_movimiento = False
     carrera_iniciada = False
     tiempo_inicio = 0
+    tarifa_actual = 0
 
     while True:
         instruccion = input("Ingrese una instrucción: ")
@@ -45,25 +46,28 @@ def main():
             if not carrera_iniciada:
                 carrera_iniciada = True
                 tiempo_inicio = time.time()
+                tarifa_actual = 0
                 print("Carrera iniciada.")
             else:
                 print("La carrera ya ha sido iniciada.")
         elif instruccion == "movimiento":
             if carrera_iniciada:
                 taxi_en_movimiento = True
+                tarifa_actual = 0.05
                 print("El taxi está en movimiento.")
             else:
                 print("Por favor, inicie la carrera primero.")
         elif instruccion == "parado":
             if carrera_iniciada:
                 taxi_en_movimiento = False
+                tarifa_actual = 0.02
                 print("El taxi se encuentra parado.")
             else:
                 print("Por favor, inicie la carrera primero.")
         elif instruccion == "finalizar":
             if carrera_iniciada:
                 tiempo_transcurrido = time.time() - tiempo_inicio
-                precio_total = tiempo_transcurrido * 0.05
+                precio_total = tiempo_transcurrido * tarifa_actual
                 print(f"El precio total es: {precio_total:.2f} euros.")
                 guardar_registro(f"Duración: {tiempo_transcurrido:.2f} segundos, Precio: {precio_total:.2f} euros")
                 carrera_iniciada = False
