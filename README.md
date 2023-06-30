@@ -31,8 +31,8 @@
 <p align="center">
   <samp>
     [<a href="https://www.linkedin.com/in/rodrigo-lendinez-478191188/">LinkedIn</a>]
-    [<a href="https://instagram.com/blanckspeed?igshid=MzNlNGNkZWQ4Mg==">instagram</a>]
-    [<a href="inrodrigoant@gmail.com">e-mail</a>]
+    [<a href="https://instagram.com/blanckspeed?igshid=MzNlNGNkZWQ4Mg==">Instagram</a>]
+    [<a href="inrodrigoant@gmail.com">E-mail</a>]
   </samp>
 </p>
 </details>
