@@ -35,7 +35,5 @@
     [<a href="inrodrigoant@gmail.com">e-mail</a>]
   </samp>
 </p>
-
-<h2></h2><br>
 </details>
 </div>
