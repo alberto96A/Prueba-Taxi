@@ -3,3 +3,9 @@ Duración: 6.46 segundos, Precio: 0.32 euros
 Duración: 5.98 segundos, Precio: 0.30 euros
 Duración: 2.26 segundos, Precio: 0.00 euros
 Duración: 2.02 segundos, Precio: 0.00 euros
+Duración: 3.06 segundos, Precio: 0.00 euros
+Duración: 5.73 segundos, Precio: 0.29 euros
+Duración: 26.57 segundos, Precio: 0.53 euros
+Duración: 2.30 segundos, Precio: 0.00 euros
+Duración: 3.29 segundos, Precio: 0.00 euros
+Duración: 6.66 segundos, Precio: 0.33 euros
